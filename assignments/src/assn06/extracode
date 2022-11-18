@@ -1,0 +1,65 @@
+	public BST<T> remove(T element) {
+		//check if current node element is equal to given element
+		if (element.equals(_element)) {
+			//remove current node
+			//case: tree only has left children
+		if (_right.size() == 0) {
+				return _left;
+			}
+			//case: tree only has right children
+		else if (_left.size() == 0) {
+				return _right;
+			}
+			//tree has child nodes on both sides
+		else {
+				//copy right side element
+					_element = _right.getElement();
+				//remove right side node
+					_right = _right.remove(_element);
+			}
+		}
+		else if (element.compareTo(_element) < 0) {
+			//remove element from left
+			_left = _left.remove(element);
+		}
+		else {
+			//remove element from right
+			_right = _right.remove(element);
+		}
+		return this;
+	}
+
+
+
+	    public SelfBalancingBST<T> remove(T element) {
+        	// TODO
+            //return null;
+            if (element.equals(_value)) {
+                if (_right.size() == 0) {
+                    return _left;
+                } else if (_left.size() == 0) {
+                    return _right;
+                } else {
+                    _value = _right.getValue();
+                    _right = (AVLTree<T>) _right.remove(element);
+                }
+            }
+            else if (element.compareTo(_value) < 0) {
+                _left = (AVLTree<T>) _left.remove(element);
+            }
+            else {
+                _right = (AVLTree<T>) _right.remove(element);
+            }
+            return this;
+        }
+
+                // "(AVLTree<T>)" before "_left.insert()"
+                // casting or typecasting
+                // or new method that returns AVLTree<T>
+                //AVLTree<T> tmp = node.getLeft();
+                //node.setLeft(tmp.getRight());
+                //tmp.setRight(node);
+                //calculate(node);
+                //calculate(tmp);
+                //return tmp;
+                return null;
